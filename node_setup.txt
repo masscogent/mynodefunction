@@ -1,0 +1,17 @@
+step 1 :
+npm install -g express-generator
+
+step 2 :
+npx express --view=ejs
+
+step 3 :
+npm install
+
+step 4:
+edit bin->www
+set manual port any 
+
+var port = normalizePort(process.env.PORT || '3333');
+
+step 5 Run:
+npm start

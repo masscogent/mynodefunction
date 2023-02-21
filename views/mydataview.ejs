@@ -1,0 +1,48 @@
+<%- include('head.ejs',{pagetitle:title}) -%>
+
+
+
+    <div class="container mt-5">
+        <h3><%= title %></h3>
+
+        <a href="/mydata/add" type="button" class="btn btn-primary mt-3 mb-3">Add Data</a>
+
+        <% if(message.length>0){ %>
+         <div class="alert alert-primary" role="alert">
+            <strong>Success</strong> <%= message %>
+         </div>
+         <% } %>
+         
+        <div class="table-responsive">
+            <table class="table table-primary table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th>Image</th>
+                        <th scope="col">name</th>
+                        <th scope="col">address</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(valdata.length > 0){ %>
+                        <% valdata.forEach(function(data){ %>
+                    <tr class="">
+                        <td scope="row"><%= data.id %></td>
+                        <td><img style="height: 80px;width:80px" src="/upload/<%= data.image %>" alt=""></td>
+                        <td><%= data.name %></td>
+                        <td><%= data.address %></td>
+                        <td>
+                            <a href="/mydata/edit_data/<%= data.id %>" type="button" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="/mydata/delete_data/<%= data.id %>" type="button" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                    <% }); %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        
+
+    </div>
+
+    <%- include('foot.ejs') -%>
